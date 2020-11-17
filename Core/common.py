@@ -30,7 +30,6 @@ def convolutional(input_layer, filters_shape, downsample=False, activate=True, b
             conv = mish(conv)
     return conv
 
-# miss loss function
 def mish(x):
     return x * tf.math.tanh(tf.math.softplus(x))
 
