@@ -38,27 +38,26 @@ class Dataset(object):
         with open(self.annot_path, "r") as f:
             txt = f.readlines()
             annotations = []
-                for line in txt:
-                    image_path = line.strip()
-                    root, _ = os.path.splitext(image_path)
-                    with open(root + ".txt") as fd:
-                        boxes = fd.readlines()
-                        string = ""
-                        for box in boxes:
-                            box = box.strip()
-                            box = box.split()
-                            class_num = int(box[0])
-                            center_x = float(box[1])
-                            center_y = float(box[2])
-                            half_width = float(box[3]) / 2
-                            half_height = float(box[4]) / 2
-                            string += " {},{},{},{},{}".format(
+            for line in txt:
+                image_path = line.strip()
+                root, _ = os.path.splitext(image_path)
+                with open(root + ".txt") as fd:
+                    boxes = fd.readlines()
+                    string = ""
+                    for box in boxes:
+                        box = box.strip()
+                        box = box.split()
+                        class_num = int(box[0])
+                        center_x = float(box[1])
+                        center_y = float(box[2])
+                        half_width = float(box[3]) / 2
+                        half_height = float(box[4]) / 2
+                        string += " {},{},{},{},{}".format(
                                 center_x - half_width,
                                 center_y - half_height,
                                 center_x + half_width,
                                 center_y + half_height,
-                                class_num,
-                            )
+                                class_num,)
                         annotations.append(image_path + string)
 
         np.random.shuffle(annotations)
