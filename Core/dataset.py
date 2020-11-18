@@ -5,6 +5,7 @@ import numpy as np
 import tensorflow as tf
 import Core.utils as utils
 from Core.config import cfg
+from matplotlib import *
 
 
 class Dataset(object):
@@ -41,6 +42,9 @@ class Dataset(object):
             for line in txt:
                 image_path = line.strip()
                 root, _ = os.path.splitext(image_path)
+                image = pyplot.imread(image_path)
+                w = tf.dtypes.cast(tf.shape(image)[0], tf.float32)
+                h = tf.dtypes.cast(tf.shape(image)[1], tf.float32)
                 with open(root + ".txt") as fd:
                     boxes = fd.readlines()
                     string = ""
@@ -52,11 +56,13 @@ class Dataset(object):
                         center_y = float(box[2])
                         half_width = float(box[3]) / 2
                         half_height = float(box[4]) / 2
+                        x1, y1, x2, y2 = (center_x - half_width)*h, (center_y - half_height)*w, 
+                        (center_x + half_width)*h, (center_y + half_height)*w
                         string += " {},{},{},{},{}".format(
-                                center_x - half_width,
-                                center_y - half_height,
-                                center_x + half_width,
-                                center_y + half_height,
+                                x1,
+                                y1,
+                                x2,
+                                y2,
                                 class_num,)
                         annotations.append(image_path + string)
 
