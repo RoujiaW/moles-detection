@@ -10,8 +10,8 @@ from core.config import cfg
 class Dataset(object):
     """implement Dataset here"""
 
-    def __init__(self, FLAGS, is_training: bool):
-        self.strides, self.anchors, NUM_CLASS, XYSCALE = utils.load_config(FLAGS)
+    def __init__(self, is_training: bool):
+        self.strides, self.anchors, NUM_CLASS, XYSCALE = utils.load_config()
         self.dataset_type = dataset_type
 
         self.annot_path = (
