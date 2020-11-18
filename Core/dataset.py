@@ -39,7 +39,6 @@ class Dataset(object):
     def load_annotations(self):
         with open(self.annot_path, "r") as f:
             txt = f.readlines()
-            self.dataset_type == "yolo":
             annotations = []
                 for line in txt:
                     image_path = line.strip()
