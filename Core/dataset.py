@@ -56,10 +56,10 @@ class Dataset(object):
                         center_y = float(box[2])
                         half_width = float(box[3]) / 2
                         half_height = float(box[4]) / 2
-                        x1 = (center_x - half_width)*h
-                        y1 = (center_y - half_height)*w
-                        x2 = (center_x + half_width)*h
-                        y2 = (center_y + half_height)*w
+                        x1 = (center_x - half_width)#*h
+                        y1 = (center_y - half_height)#*w
+                        x2 = (center_x + half_width)#*h
+                        y2 = (center_y + half_height)#*w
                         string += " {},{},{},{},{}".format(
                                 x1,
                                 y1,
