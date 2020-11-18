@@ -1,9 +1,9 @@
 import numpy as np
 import tensorflow as tf
-import core.utils as utils
-import core.common as common
-import core.backbone as backbone
-from core.config import cfg
+import Core.utils as utils
+import Core.common as common
+import Core.backbone as backbone
+from Core.config import cfg
 
 def YOLOv4(input_layer, NUM_CLASS):
     route_1, route_2, conv = backbone.cspdarknet53(input_layer)

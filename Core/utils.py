@@ -3,7 +3,7 @@ import random
 import colorsys
 import numpy as np
 import tensorflow as tf
-from core.config import cfg
+from Core.config import cfg
 
 def load_freeze_layer():
     freeze_layouts = ['conv2d_93', 'conv2d_101', 'conv2d_109']
