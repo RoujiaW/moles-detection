@@ -4,8 +4,8 @@ import random
 import numpy as np
 import tensorflow as tf
 import Core.utils as utils
+import matplotlib.pyplot as plt 
 from Core.config import cfg
-from matplotlib import *
 
 
 class Dataset(object):
@@ -42,7 +42,7 @@ class Dataset(object):
             for line in txt:
                 image_path = line.strip()
                 root, _ = os.path.splitext(image_path)
-                image = pyplot.imread(image_path)
+                image = plt.imread(image_path)
                 w = tf.dtypes.cast(tf.shape(image)[0], tf.float32)
                 h = tf.dtypes.cast(tf.shape(image)[1], tf.float32)
                 with open(root + ".txt") as fd:
