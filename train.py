@@ -35,11 +35,11 @@ def main(_argv):
     bbox_tensors = []
     for i, fm in enumerate(feature_maps):
         if i == 0:
-            bbox_tensor = decode_train(fm, SIZE // 8, NUM_CLASS, STRIDES, ANCHORS, i, XYSCALE)
+            bbox_tensor = decode_train(fm, cfg.TRAIN.INPUT_SIZE // 8, NUM_CLASS, STRIDES, ANCHORS, i, XYSCALE)
         elif i == 1:
-            bbox_tensor = decode_train(fm, SIZE // 16, NUM_CLASS, STRIDES, ANCHORS, i, XYSCALE)
+            bbox_tensor = decode_train(fm, cfg.TRAIN.INPUT_SIZE // 16, NUM_CLASS, STRIDES, ANCHORS, i, XYSCALE)
         else:
-            bbox_tensor = decode_train(fm, SIZE // 32, NUM_CLASS, STRIDES, ANCHORS, i, XYSCALE)
+            bbox_tensor = decode_train(fm, cfg.TRAIN.INPUT_SIZE // 32, NUM_CLASS, STRIDES, ANCHORS, i, XYSCALE)
         bbox_tensors.append(fm) 
         bbox_tensors.append(bbox_tensor) #confidence map
         
