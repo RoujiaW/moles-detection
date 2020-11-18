@@ -3,12 +3,12 @@ from absl.flags import FLAGS
 import os
 import shutil
 import tensorflow as tf
-from core.yolov4 import YOLOv4, decode, compute_loss, decode_train
-from core.dataset import Dataset
-from core.config import cfg
+from Core.yolov4 import YOLOv4, decode, compute_loss, decode_train
+from Core.dataset import Dataset
+from Core.config import cfg
 import numpy as np
-from core import utils
-from core.utils import freeze_all, unfreeze_all
+from Core import utils
+from Core.utils import freeze_all, unfreeze_all
 
 def main(_argv):
 #     physical_devices = tf.config.experimental.list_physical_devices('GPU')
