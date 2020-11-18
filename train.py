@@ -11,14 +11,11 @@ from Core import utils
 from Core.utils import freeze_all, unfreeze_all
 
 def main(_argv):
-#     physical_devices = tf.config.experimental.list_physical_devices('GPU')
-#     if len(physical_devices) > 0:
-#         tf.config.experimental.set_memory_growth(physical_devices[0], True)
     trainset = Dataset(is_training=True)
     testset = Dataset(is_training=False)
     logdir = "./data/log"
     isfreeze = False
-    steps_per_epoch = len(trainset)
+    steps_per_epoch = round(len(trainset)/2)
     first_stage_epochs = cfg.TRAIN.FISRT_STAGE_EPOCHS
     second_stage_epochs = cfg.TRAIN.SECOND_STAGE_EPOCHS
     global_steps = tf.Variable(1, trainable=False, dtype=tf.int64)
@@ -55,7 +52,6 @@ def main(_argv):
         with tf.GradientTape() as tape:
             pred_result = model(image_data, training=True)
             giou_loss = conf_loss = prob_loss = 0
-
             # optimizing process
             for i in range(len(freeze_layers)):
                 conv, pred = pred_result[i * 2], pred_result[i * 2 + 1]
