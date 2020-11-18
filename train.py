@@ -3,7 +3,7 @@ from absl.flags import FLAGS
 import os
 import shutil
 import tensorflow as tf
-from Core.yolov4 import YOLOv4, decode, compute_loss, decode_train
+from Core.yolov4 import YOLOv4, compute_loss, decode_train
 from Core.dataset import Dataset
 from Core.config import cfg
 import numpy as np
