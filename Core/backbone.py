@@ -1,5 +1,5 @@
 import tensorflow as tf
-import core.common as common
+import Core.common as common
 
 def cspdarknet53(input_data):
 
