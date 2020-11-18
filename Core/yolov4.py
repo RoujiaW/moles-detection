@@ -103,7 +103,7 @@ def compute_loss(pred, conv, label, bboxes, STRIDES, NUM_CLASS, IOU_LOSS_THRESH,
     respond_bbox  = label[:, :, :, :, 4:5]
     label_prob    = label[:, :, :, :, 5:]
 
-    giou = tf.expand_dims(bbox_giou(pred_xywh, label_xywh), axis=-1)
+    giou = tf.expand_dims(utils.bbox_giou(pred_xywh, label_xywh), axis=-1)
     input_size = tf.cast(input_size, tf.float32)
 
     bbox_loss_scale = 2.0 - 1.0 * label_xywh[:, :, :, :, 2:3] * label_xywh[:, :, :, :, 3:4] / (input_size ** 2)
