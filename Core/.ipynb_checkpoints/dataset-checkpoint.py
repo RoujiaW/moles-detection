@@ -12,8 +12,6 @@ class Dataset(object):
 
     def __init__(self, is_training: bool):
         self.strides, self.anchors, NUM_CLASS, XYSCALE = utils.load_config()
-        self.dataset_type = dataset_type
-
         self.annot_path = (
             cfg.TRAIN.ANNOT_PATH if is_training else cfg.TEST.ANNOT_PATH
         )
@@ -245,17 +243,12 @@ class Dataset(object):
         if not os.path.exists(image_path):
             raise KeyError("%s does not exist ... " % image_path)
         image = cv2.imread(image_path)
-        if self.dataset_type == "converted_coco":
-            bboxes = np.array(
-                [list(map(int, box.split(","))) for box in line[1:]]
-            )
-        elif self.dataset_type == "yolo":
-            height, width, _ = image.shape
-            bboxes = np.array(
+        height, width, _ = image.shape
+        bboxes = np.array(
                 [list(map(float, box.split(","))) for box in line[1:]]
             )
-            bboxes = bboxes * np.array([width, height, width, height, 1])
-            bboxes = bboxes.astype(np.int64)
+        bboxes = bboxes * np.array([width, height, width, height, 1])
+        bboxes = bboxes.astype(np.int64)
 
         if self.data_aug:
             image, bboxes = self.random_horizontal_flip(
