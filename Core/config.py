@@ -20,7 +20,7 @@ __C.YOLO.IOU_LOSS_THRESH      = 0.5
 __C.TRAIN                     = edict()
 
 __C.TRAIN.ANNOT_PATH          = "./data/train.txt"
-__C.TRAIN.BATCH_SIZE          = 64
+__C.TRAIN.BATCH_SIZE          = 2
 __C.TRAIN.INPUT_SIZE          = 416
 __C.TRAIN.DATA_AUG            = True
 __C.TRAIN.LR_INIT             = 1e-3
