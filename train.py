@@ -15,7 +15,7 @@ def main(_argv):
     testset = Dataset(is_training=False)
     logdir = "./data/log"
     isfreeze = False
-    steps_per_epoch = round(len(trainset)/5)
+    steps_per_epoch = len(trainset)
     first_stage_epochs = cfg.TRAIN.FISRT_STAGE_EPOCHS
     second_stage_epochs = cfg.TRAIN.SECOND_STAGE_EPOCHS
     global_steps = tf.Variable(1, trainable=False, dtype=tf.int64)
