@@ -1,9 +1,9 @@
 import tensorflow as tf
 from absl import app, flags, logging
 from absl.flags import FLAGS
-from core.yolov4 import YOLO, decode, filter_boxes
-import core.utils as utils
-from core.config import cfg
+from Core.yolov4 import YOLOv4, decode_tf, filter_boxes
+import Core.utils as utils
+from Core.config import cfg
 
 flags.DEFINE_string('weights', './data/yolov4.weights', 'path to weights file')
 flags.DEFINE_string('output', './checkpoints/yolov4-416', 'path to output')
@@ -14,7 +14,7 @@ def save_tf():
   STRIDES, ANCHORS, NUM_CLASS, XYSCALE = utils.load_config()
 
   input_layer = tf.keras.layers.Input([FLAGS.input_size, FLAGS.input_size, 3])
-  feature_maps = YOLO(input_layer, NUM_CLASS)
+  feature_maps = YOLOv4(input_layer, NUM_CLASS)
   bbox_tensors = []
   prob_tensors = []
   for i, fm in enumerate(feature_maps):
