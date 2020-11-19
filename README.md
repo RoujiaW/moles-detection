@@ -6,8 +6,6 @@ This code implements the paper YOLOv4: **Optimal Speed and Accuracy of Object De
 ## Training in Google Colab Jupyter Notebook: 
 https://colab.research.google.com/drive/13f0n_4bXfeA5itLIwpcpdMp_zp4U2XOq#scrollTo=QbmnsoNEUgxv
 
-## Examples:
-
 ## Reference: 
 @misc{bochkovskiy2020yolov4,
 
